@@ -19,3 +19,6 @@ This mod will not add suffocation to all nodes with the group
 
 This mod adds the group `real_suffocation=1` to all nodes it has modified,
 this is mostly done for informational purposes.
+
+## License
+Everything is under WTFPL.
