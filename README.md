@@ -6,11 +6,12 @@ is for being stuck inside solid blocks. If you're inside a solid block, you lose
 breath. If you lost your breath completely and you're still inside, you suffer
 10 HP (=5 “hearts”) of damage every 2 seconds.
 
-Suffocation is added to all blocks which:
+Specifically, suffocation is added to all blocks which:
 
 * Are solid
-* Have the shape of a full cube
-
+* Are full cubes
+* Don't already have built-in damage or drowning damage
+* Are not excluded from suffocations by mods
 
 ## Info for modders
 This mod will not add suffocation to all nodes with the group
