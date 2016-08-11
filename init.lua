@@ -9,7 +9,7 @@ end
 if suffocation_damage > 0 then
 
 -- Checks all nodes and adds suffocation (drowning damage) for suitable nodes
-function add_suffocation()
+local function add_suffocation()
 	-- For debugging output
 	local suffocate_nodes = {}
 	local no_suffocate_nodes = {}
