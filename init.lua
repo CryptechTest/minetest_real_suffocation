@@ -11,8 +11,10 @@ if suffocation_damage > 0 then
 -- Checks all nodes and adds suffocation (drowning damage) for suitable nodes
 local function add_suffocation()
 	-- For debugging output
-	local suffocate_nodes = {}
-	local no_suffocate_nodes = {}
+	--local suffocate_nodes = {}
+	--local no_suffocate_nodes = {}
+	local suffocate_node_count = 0
+	local no_suffocate_node_count = 0
 	-- Check ALL the nodes!
 	for itemstring, def in pairs(minetest.registered_nodes) do
 		--[[ Here comes the HUGE conditional deciding whether we use suffocation. We want to catch as many nodes as possible
@@ -36,14 +38,17 @@ local function add_suffocation()
 			marked_groups.real_suffocation = 1
 			-- Let's hack the node!
 			minetest.override_item(itemstring, { drowning = suffocation_damage, groups = marked_groups })
-			table.insert(suffocate_nodes, itemstring)
+			--table.insert(suffocate_nodes, itemstring)
+			suffocate_node_count = suffocate_node_count + 1
 		else
-			table.insert(no_suffocate_nodes, itemstring)
+			--table.insert(no_suffocate_nodes, itemstring)
+			no_suffocate_node_count = no_suffocate_node_count + 1
 		end
 	end
-	minetest.log("info", "[real_suffocation] Suffocation has been hacked into "..#suffocate_nodes.." nodes.")
-	minetest.log("verbose", "[real_suffocation] Nodes with suffocation: "..dump(suffocate_nodes))
-	minetest.log("verbose", "[real_suffocation] Suffocation has not been hacked into "..#no_suffocate_nodes.." nodes: "..dump(no_suffocate_nodes))
+	minetest.log("info", "[real_suffocation] Suffocation has been hacked into "..suffocate_node_count.." nodes.")
+	minetest.log("info", "[real_suffocation] Suffocation has not been hacked into "..no_suffocate_node_count.." nodes.")
+	--minetest.log("verbose", "[real_suffocation] Nodes with suffocation: "..dump(suffocate_nodes))
+	--minetest.log("verbose", "[real_suffocation] Suffocation has not been hacked into "..#no_suffocate_nodes.." nodes: "..dump(no_suffocate_nodes))
 end
 
 -- This is a minor hack to make sure our loop runs after all nodes have been registered
